@@ -129,6 +129,7 @@ public class Sample {
 //			}
 //
 //		}
+		//+++++++++++++++++++++++++++++
 		//ExtentManagerCode
 //		private static ExtentReports extent;
 //		public static ExtentReports createInstance(String fileName) {
@@ -169,6 +170,7 @@ public class Sample {
 //	//
 //	//	
 ////		}
+		
 		
 	}
 
