@@ -1,25 +1,18 @@
 package sample;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
+
+
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.remote.AndroidMobileCapabilityType;
-import io.appium.java_client.remote.MobileCapabilityType;
 
 
 public class SampleAutomation {
@@ -27,7 +20,7 @@ public class SampleAutomation {
 	public WebDriver driver;
 	//public AppiumDriver<MobileElement> driver;
 	@BeforeTest
-	public void setUp() throws MalformedURLException, InterruptedException{
+	public void setUp() throws MalformedURLException{
 //		System.out.println("Set Up is Calling");
 //		
 //			System.out.println("Entered try block");
@@ -52,18 +45,19 @@ public class SampleAutomation {
 //			Thread.sleep(10000);
 //		System.out.println("Set Up is Executed");
 		driver = new SafariDriver();
-		driver.get("www.google.com");
+		driver.get("https://www.w3schools.com/python/default.asp");
+		driver.manage().window().maximize();
 		//driver.switchTo().window(WindowType.WINDOW);
 	}
 	
 	@Test
 	public void verifyLaunchOfAdhaar() throws InterruptedException{
 		System.out.println("Method Calling");
-		WebElement allow = driver.findElement(By.id("permission_allow_button"));
-		allow.click();
+		List<WebElement>  next = driver.findElements(By.xpath("//div[@class='w3-clear nextprev']/child::a[contains(text(),'Next')]"));
+		System.out.println(next.get(0).getText());
 		Thread.sleep(2000);
-		WebElement allowWhileUsingApp = driver.findElement(By.id("permission_allow_foreground_only_button"));
-		allowWhileUsingApp.click();
+//		WebElement allowWhileUsingApp = driver.findElement(By.id("permission_allow_foreground_only_button"));
+//		allowWhileUsingApp.click();
 	}
 	
 	@AfterTest
